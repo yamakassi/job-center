@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
 
-    <menu id="application" caption="msg://com.company.jobcenter/menu.application" insertBefore="administration">
-        <item screen="User.browse" caption="msg://com.company.jobcenter.screen.user/UserBrowse.caption"/>
-        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+    <menu id="job-center" caption="msg://com.company.jobcenter/menu_config.job-center">
+        <item screen="JobCenter.vacancies"
+              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterVacancies.menu"/>
+        <item screen="JobCenter.citizens"
+              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterCitizens.menu"/>
+        <separator/>
     </menu>
-
+    <menu id="application-masterData" caption="msg://com.company.jobcenter/menu.application">
+        <item screen="User.browse" caption="msg://com.company.jobcenter.screen.user/UserBrowse.caption"/>
+        <item screen="Citizen.browse" caption="msg://com.company.jobcenter.screen.citizen/citizenBrowse.menu"/>
+        <item screen="Profession.browse" caption="msg://com.company.jobcenter.screen.profession/professionBrowse.menu"/>
+        <item screen="RegistrationCard.browse"
+              caption="msg://com.company.jobcenter.screen.registrationcard/registrationCardBrowse.menu"/>
+        <item screen="Vacancy.browse" caption="msg://com.company.jobcenter.screen.vacancy/vacancyBrowse.menu"/>
+    </menu>
+    <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"
+          insertAfter="application-masterData"/>
+    <menu id="administration">
+        <item screen="ui_JmxConsoleScreen"/>
+        <item screen="entityInspector.browse"/>
+        <item screen="sec_ResourceRoleModel.browse"
+              caption="msg://io.jmix.securityui/menu.sec_ResourceRoleModel.browse"/>
+        <item screen="sec_RowLevelRoleModel.browse"
+              caption="msg://io.jmix.securityui/menu.sec_RowLevelRoleModel.browse"/>
+    </menu>
 </menu-config>

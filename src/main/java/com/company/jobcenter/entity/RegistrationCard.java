@@ -18,8 +18,7 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "REGISTRATION_CARD", indexes = {
-        @Index(name = "IDX_REGISTRATIONCARD", columnList = "CITIZEN_ID"),
-        @Index(name = "IDX_REGISTRATIONCARD", columnList = "JOB_CENTER_ID")
+        @Index(name = "IDX_REGISTRATIONCARD", columnList = "CITIZEN_ID")
 })
 @Entity
 public class RegistrationCard {
@@ -34,9 +33,8 @@ public class RegistrationCard {
     private Citizen citizen;
 
     @OnDelete(DeletePolicy.CASCADE)
-    @JoinColumn(name = "JOB_CENTER_ID", nullable = false)
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "JOB_CENTER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
 
     @Column(name = "IS_BENIFIT_PAID")

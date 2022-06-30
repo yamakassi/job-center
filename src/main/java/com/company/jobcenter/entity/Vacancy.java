@@ -55,8 +55,8 @@ public class Vacancy {
     private String employerName;
 
     @JoinTable(name = "VACANCY_PROFESSION_LINK",
-            joinColumns = @JoinColumn(name = "VACANCY_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PROFESSION_ID"))
+            joinColumns = @JoinColumn(name = "VACANCY_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROFESSION_ID", referencedColumnName = "ID"))
     @ManyToMany
     private Set<Profession> professions;
 
@@ -78,8 +78,8 @@ public class Vacancy {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "JOB_CENTER_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "JOB_CENTER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
 
     public Set<Profession> getProfessions() {
