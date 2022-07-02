@@ -18,7 +18,8 @@ import java.util.UUID;
 @JmixEntity
 @Table(name = "CITIZEN", indexes = {
         @Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID"),
-        @Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID")
+        @Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID"),
+        @Index(name = "IDX_CITIZEN_VACANCY_ID", columnList = "VACANCY_ID")
 })
 @Entity
 public class Citizen {
@@ -80,6 +81,17 @@ public class Citizen {
     @JoinColumn(name = "JOB_CENTER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
+    @JoinColumn(name = "VACANCY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vacancy vacancy;
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    public void setVacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
+    }
 
     public Profession getProfession() {
         return profession;
@@ -173,6 +185,7 @@ public class Citizen {
         return createdBy;
     }
 
+
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
@@ -191,5 +204,15 @@ public class Citizen {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Object getName() {
+        String fullName = firstName+" "+lastName;
+
+        if (patronymic != null) {
+            fullName += " " + patronymic;
+        }
+
+        return fullName;
     }
 }

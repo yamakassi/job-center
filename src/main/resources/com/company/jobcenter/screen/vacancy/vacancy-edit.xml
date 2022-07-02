@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
+
         caption="msg://vacancyEdit.caption"
         focusComponent="form">
     <data>
         <instance id="vacancyDc"
-                  class="com.company.jobcenter.entity.Vacancy">
-            <fetchPlan extends="_base">
-                <property name="professions" fetchPlan="_base"/>
-            </fetchPlan>
+                    class="com.company.jobcenter.entity.Vacancy" >
+            <fetchPlan   extends="_base"><property name="professions" fetchPlan="_base"/></fetchPlan>
             <loader/>
+
             <collection id="professionsDc" property="professions"/>
+            <collection id="employeesDc" property="employees"/>
         </instance>
+
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
+
         <screenSettings id="settingsFacet" auto="true"/>
     </facets>
     <actions>
@@ -25,37 +28,84 @@
                 caption="msg:///actions.Close"
                 icon="EDITOR_CANCEL"/>
     </actions>
-    <dialogMode height="600"
+
+    <dialogMode height="700"
                 width="800"/>
-    <layout spacing="true" expand="scrollBox">
-        <scrollBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="vacancyDc">
-                <column width="350px">
-                    <textField id="positionField" property="position"/>
-                    <textField id="salaryField" property="salary"/>
-                    <textField id="rateField" property="rate"/>
-                    <textField id="employerNameField" property="employerName"/>
-                </column>
-            </form>
-            <groupBox id="professionsBox" caption="msg://com.company.jobcenter.entity/Vacancy.professions">
-                <table id="professionsTable" dataContainer="professionsDc" width="100%" height="200px">
-                    <actions>
-                        <action id="add" type="add"/>
-                        <action id="exclude" type="exclude"/>
-                    </actions>
-                    <columns>
-                        <column id="name"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="professionsTable.add"/>
-                        <button action="professionsTable.exclude"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-        </scrollBox>
-        <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
-        </hbox>
-    </layout>
+<layout spacing="true" >
+    <tabSheet>
+        <tab caption="msg://vacancyId.caption" id="vacancyId" spacing="true"  >
+
+
+
+        <form id="form" dataContainer="vacancyDc" width="100%">
+        <column width="350px">
+
+            <textField id="positionField" property="position"/>
+
+            <textField id="salaryField" property="salary"/>
+
+            <textField id="rateField" property="rate"/>
+
+            <textField id="employerNameField" property="employerName"/>
+
+        </column>
+        </form>
+
+
+
+        <groupBox id="professionsBox" caption="msg://com.company.jobcenter.entity/Vacancy.professions"
+                  width="100%">
+        <table id="professionsTable" dataContainer="professionsDc" width="100%">
+
+            <actions>
+                <action id="add" type="add"/>
+
+                <action id="exclude" type="exclude"/>
+            </actions>
+
+            <columns>
+
+                    <column id="name"/>
+
+            </columns>
+
+            <buttonsPanel>
+                <button action="professionsTable.add" id="add"/>
+
+                <button action="professionsTable.exclude" id="exclude" align="TOP_RIGHT"/>
+            </buttonsPanel>
+
+        </table>
+        </groupBox>
+
+
+        </tab>
+        <tab caption="msg://employeesId.caption" id="employeesId" spacing="true" width="100%">
+            <treeTable id="citizensTable" height="100%" hierarchyProperty=" " width="100%"
+                       dataContainer="employeesDc">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <buttonsPanel alwaysVisible="true">
+                    <button id="citizensTableAddBtn" action="citizensTable.add"/>
+                    <button id="citizensTableExcludeBtn" action="citizensTable.exclude"/>
+                </buttonsPanel>
+                <columns>
+                    <column id="firstName"/>
+                    <column id="lastName"/>
+                    <column id="patronymic"/>
+                    <column id="profession"/>
+                    <column id="isEmployment"/>
+
+                </columns>
+            </treeTable>
+        </tab>
+    </tabSheet>
+    <hbox id="editActions" spacing="true" align="BOTTOM_LEFT">
+        <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+        <button id="closeBtn" action="windowClose"/>
+    </hbox>
+</layout>
+
 </window>
