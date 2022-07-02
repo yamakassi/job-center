@@ -40,9 +40,10 @@
                   dataContainer="citizensDc">
             <actions>
                 <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
+                <action id="edit" type="view"/>
                 <action id="refresh" type="refresh"/>
                 <action id="remove" type="remove"/>
+                <action id="suitableVacancies"/>
             </actions>
             <columns>
                 <column property="firstName" id="firstName"/>
