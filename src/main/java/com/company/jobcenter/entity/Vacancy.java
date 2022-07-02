@@ -1,8 +1,10 @@
 package com.company.jobcenter.entity;
 
+import io.jmix.core.DeletePolicy;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -25,6 +27,10 @@ public class Vacancy {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "vacancy")
+    private Set<Citizen> employees;
 
     @Column(name = "POSITION_", nullable = false)
     @NotNull
@@ -55,8 +61,8 @@ public class Vacancy {
     private String employerName;
 
     @JoinTable(name = "VACANCY_PROFESSION_LINK",
-            joinColumns = @JoinColumn(name = "VACANCY_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PROFESSION_ID"))
+            joinColumns = @JoinColumn(name = "VACANCY_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "PROFESSION_ID", referencedColumnName = "ID"))
     @ManyToMany
     private Set<Profession> professions;
 
@@ -78,9 +84,17 @@ public class Vacancy {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "JOB_CENTER_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "JOB_CENTER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
+
+    public void setEmployees(Set<Citizen> employees) {
+        this.employees = employees;
+    }
+
+    public Set<Citizen> getEmployees() {
+        return employees;
+    }
 
     public Set<Profession> getProfessions() {
         return professions;

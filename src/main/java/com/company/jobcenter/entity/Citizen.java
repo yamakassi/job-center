@@ -17,7 +17,9 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "CITIZEN", indexes = {
-        @Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID")
+        @Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID"),
+        @Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID"),
+        @Index(name = "IDX_CITIZEN_VACANCY_ID", columnList = "VACANCY_ID")
 })
 @Entity
 public class Citizen {
@@ -42,9 +44,9 @@ public class Citizen {
     @Column(name = "PATRONYMIC")
     private String patronymic;
 
-    @Column(name = "PROFESSION", nullable = false)
-    @NotNull
-    private String profession;
+    @JoinColumn(name = "PROFESSION_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Profession profession;
 
     @Column(name = "IS_EMPLOYMENT")
     private Boolean isEmployment = false;
@@ -76,9 +78,28 @@ public class Citizen {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "JOB_CENTER_ID", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "JOB_CENTER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
+    @JoinColumn(name = "VACANCY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vacancy vacancy;
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    public void setVacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
+    }
+
+    public Profession getProfession() {
+        return profession;
+    }
+
+    public void setProfession(Profession profession) {
+        this.profession = profession;
+    }
 
     public JobCenter getJobCenter() {
         return jobCenter;
@@ -94,14 +115,6 @@ public class Citizen {
 
     public void setIsEmployment(Boolean isEmployment) {
         this.isEmployment = isEmployment;
-    }
-
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
     }
 
     public String getPatronymic() {
@@ -172,6 +185,7 @@ public class Citizen {
         return createdBy;
     }
 
+
     public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
@@ -190,5 +204,15 @@ public class Citizen {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Object getName() {
+        String fullName = firstName+" "+lastName;
+
+        if (patronymic != null) {
+            fullName += " " + patronymic;
+        }
+
+        return fullName;
     }
 }
