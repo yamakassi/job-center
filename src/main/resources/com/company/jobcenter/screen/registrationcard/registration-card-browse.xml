@@ -46,11 +46,10 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <columns>
-                        <column id="citizen"/>
                         <column id="amountBenefit"/>
                         <column id="dateStartWork"/>
                         <column id="isBenifitPaid"/>
-
+                        <column id="citizen"/>
                     </columns>
                     <simplePagination/>
                     <buttonsPanel id="buttonsPanel"
@@ -69,9 +68,9 @@
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="registrationCardDc">
                         <column width="350px">
-                            <textField id="amountBenefitField" property="amountBenefit"/>
                             <checkBox id="isBenifitPaidField" property="isBenifitPaid"/>
                             <dateField id="dateStartWorkField" property="dateStartWork"/>
+                            <textField id="amountBenefitField" property="amountBenefit"/>
                             <entityPicker id="citizenField" property="citizen"/>
                         </column>
                     </form>
