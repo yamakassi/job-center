@@ -93,6 +93,18 @@ public class Citizen {
         this.vacancy = vacancy;
     }
 
+    @JoinColumn(name = "VACANCY_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vacancy vacancy;
+
+    public Vacancy getVacancy() {
+        return vacancy;
+    }
+
+    public void setVacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
+    }
+
     public Profession getProfession() {
         return profession;
     }
