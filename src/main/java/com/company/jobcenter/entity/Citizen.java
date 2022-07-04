@@ -81,6 +81,7 @@ public class Citizen {
     @JoinColumn(name = "JOB_CENTER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
+
     @JoinColumn(name = "VACANCY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Vacancy vacancy;

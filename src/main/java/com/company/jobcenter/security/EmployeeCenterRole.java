@@ -24,7 +24,7 @@ public interface EmployeeCenterRole {
     void vacancy();
 
     @MenuPolicy(menuIds = {"Citizen.browse", "Vacancy.browse", "themeSettingsScreen", "RegistrationCard.browse", "Profession.browse"})
-    @ScreenPolicy(screenIds = {"Citizen.browse", "Profession.browse", "RegistrationCard.browse", "Vacancy.browse", "MainScreen", "LoginScreen", "themeSettingsScreen", "User.browse", "Citizen.edit", "Profession.edit", "Vacancy.edit"})
+    @ScreenPolicy(screenIds = {"Citizen.browse", "Profession.browse", "RegistrationCard.browse", "Vacancy.browse", "MainScreen", "LoginScreen", "themeSettingsScreen", "User.browse", "Citizen.edit", "Profession.edit"})
     void screens();
 
     @EntityAttributePolicy(entityClass = User.class, attributes = "*", action = EntityAttributePolicyAction.VIEW)
