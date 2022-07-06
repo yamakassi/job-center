@@ -11,6 +11,8 @@
             </fetchPlan>
             <loader/>
             <collection id="employeesDc" property="employees"/>
+
+
             <collection id="professionsDc" property="professions"/>
         </instance>
     </data>
@@ -29,53 +31,59 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout spacing="true" expand="scrollBox">
-        <scrollBox id="scrollBox" spacing="true">
-            <form id="form" dataContainer="vacancyDc">
-                <column width="350px">
-                    <textField id="positionField" property="position"/>
-                    <textField id="salaryField" property="salary"/>
-                    <textField id="rateField" property="rate"/>
-                    <textField id="employerNameField" property="employerName"/>
-                </column>
-            </form>
-            <groupBox id="employeesBox" >
-                <table id="employeesTable" dataContainer="employeesDc" width="100%" height="200px">
-                    <actions>
-                        <action id="add" type="add"/>
-                        <action id="exclude" type="exclude"/>
-                    </actions>
-                    <columns>
-                        <column id="firstName"/>
-                        <column id="lastName"/>
-                        <column id="patronymic"/>
-                        <column id="isEmployment"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="employeesTable.add"/>
-                        <button action="employeesTable.exclude"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-            <groupBox id="professionsBox" >
-                <table id="professionsTable" dataContainer="professionsDc" width="100%" height="200px">
-                    <actions>
-                        <action id="add" type="add"/>
-                        <action id="exclude" type="exclude"/>
-                    </actions>
-                    <columns>
-                        <column id="name"/>
-                    </columns>
-                    <buttonsPanel>
-                        <button action="professionsTable.add"/>
-                        <button action="professionsTable.exclude"/>
-                    </buttonsPanel>
-                </table>
-            </groupBox>
-        </scrollBox>
-        <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
-        </hbox>
+    <layout spacing="true" >
+        <tabSheet>
+            <tab caption="msg://vacancyTab.caption" id="vacancyTab" spacing="true">
+                <form id="form" dataContainer="vacancyDc">
+                    <column width="350px">
+                        <textField id="positionField" property="position"/>
+                        <textField id="salaryField" property="salary"/>
+                        <textField id="rateField" property="rate"/>
+                        <textField id="employerNameField" property="employerName"/>
+                    </column>
+                </form>
+                <groupBox id="professionsBox" caption="msg://professionsBox.caption" height="100%"
+                >
+                    <table id="professionsTable" dataContainer="professionsDc" width="100%">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="exclude" type="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="name"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="professionsTable.add"/>
+                            <button action="professionsTable.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab caption="msg://employeesTab1.caption" id="employeesTab" spacing="true">
+                <groupBox id="employeesBox" >
+                    <table id="employeesTable" dataContainer="employeesDc" width="100%" height="200px">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="exclude" type="exclude"/>
+                        </actions>
+                        <columns>
+                            <column id="firstName"/>
+                            <column id="lastName"/>
+                            <column id="patronymic"/>
+                            <column id="isEmployment"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="employeesTable.add"/>
+                            <button action="employeesTable.exclude"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true" align="BOTTOM_LEFT">
+        <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+        <button id="closeBtn" action="windowClose"/>
+    </hbox>
     </layout>
+
 </window>

@@ -6,6 +6,6 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="1" author="job-center">
-        <dropColumn columnName="vacancy_id" tableName="citizen"/>
+        <dropIndex indexName="idx_citizen_vacancy_id" tableName="citizen"/>
     </changeSet>
 </databaseChangeLog>

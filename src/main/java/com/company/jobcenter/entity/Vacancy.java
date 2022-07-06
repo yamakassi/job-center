@@ -13,7 +13,9 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +44,8 @@ public class Vacancy {
     @Column(name = "SALARY")
     private Long salary;
 
+    @DecimalMax(message = "{msg://com.company.jobcenter.entity/Vacancy.rate.validation.DecimalMax}", value = "3")
+    @PositiveOrZero(message = "{msg://com.company.jobcenter.entity/Vacancy.rate.validation.PositiveOrZero}")
     @Column(name = "RATE", nullable = false)
     @NotNull
     private Double rate;

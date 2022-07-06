@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,27 +34,31 @@ public class VacancyService {
 
     public Collection<Citizen> setRegisterCardAfterEmploymenCitizen(Collection<Citizen> collection, Vacancy vacancy) {
         List<RegistrationCard> registrationCards = dataManager.load(RegistrationCard.class).all().list();
-        List<Citizen> citizenSelect = collection.stream().collect(Collectors.toList());
-        for (Citizen citizen : citizenSelect) {
+        List<Citizen> citizenSelect = new ArrayList<>(collection);
+       for (Citizen citizen : citizenSelect) {
             citizen.setIsEmployment(Boolean.TRUE);
 
+            RegistrationCard cardRegist = registrationCards.stream()
+                    .filter(card -> card.getCitizen().equals(citizen))
+                    .findAny()
+                    .orElseThrow(()->new IllegalStateException("citizen is not registered in the job center"));
 
-            if (vacancy.getRate() < 1 && vacancy.getSalary() < MIN_SALARY) {
-                RegistrationCard cardRegist = registrationCards.stream().filter(card -> card.getCitizen().equals(citizen)).findFirst().orElse(null);
-                if ( cardRegist==null) {
-                      throw new IllegalStateException("citizen is not registered in the job center");
-                }
+            if (vacancy.getRate() >= 1 && vacancy.getSalary() > MIN_SALARY) {
+
                 cardRegist.setIsBenifitPaid(Boolean.FALSE);
+
                 cardRegist.setAmountBenefit(0L);
-                dataManager.save(cardRegist);
+
             }
+            cardRegist.setDateStartWork(new Date());
+            dataManager.save(cardRegist);
         }
         return citizenSelect;
     }
 
     public boolean validateRegistrationCardCitizen(Collection<Citizen> selectedValidateCitizen) {
         List<RegistrationCard> registrationCards = dataManager.load(RegistrationCard.class).all().list();
-        List<Citizen> citizenValidateSelect = selectedValidateCitizen.stream().collect(Collectors.toList());
+        List<Citizen> citizenValidateSelect = new ArrayList<>(selectedValidateCitizen);
         for (Citizen citizen : citizenValidateSelect) {
 
 

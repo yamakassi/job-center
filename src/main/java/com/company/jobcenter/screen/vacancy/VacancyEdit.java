@@ -2,13 +2,18 @@ package com.company.jobcenter.screen.vacancy;
 
 import com.company.jobcenter.app.VacancyService;
 import com.company.jobcenter.entity.Citizen;
+import com.company.jobcenter.screen.citizen.CitizenBrowse;
 import io.jmix.core.Messages;
+import io.jmix.core.Sort;
+import io.jmix.core.common.util.ParamsMap;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.RemoveOperation;
+import io.jmix.ui.action.list.AddAction;
 import io.jmix.ui.screen.*;
 import com.company.jobcenter.entity.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.inject.Named;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +32,10 @@ public class VacancyEdit extends StandardEditor<Vacancy> {
     @Autowired
     private MessageBundle messageBundle;
 
+
+
+
+
     @Install(to = "employeesTable.add", subject = "transformation")
     private Collection<Citizen> employeesTableAddTransformation(Collection<Citizen> collection) {
 
@@ -36,6 +45,10 @@ public class VacancyEdit extends StandardEditor<Vacancy> {
 
 
     }
+
+
+
+
 
     @Install(to = "employeesTable.exclude", subject = "afterActionPerformedHandler")
     private void employeesTableExcludeAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<Citizen> afterActionPerformedEvent) {
