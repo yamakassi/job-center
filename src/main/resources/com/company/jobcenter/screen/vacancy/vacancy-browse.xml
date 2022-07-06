@@ -51,8 +51,6 @@
                 <column id="rate"/>
                 <column id="employerName"/>
                 <column id="createdDate"/>
-                <column id="professions"/>
-
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

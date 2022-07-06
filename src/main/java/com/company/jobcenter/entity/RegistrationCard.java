@@ -13,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.Date;
 import java.util.UUID;
 
@@ -37,14 +38,15 @@ public class RegistrationCard {
     @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
 
-    @Column(name = "IS_BENIFIT_PAID")
-    private Boolean isBenifitPaid;
-
-    @Column(name = "DATE_START_WORK", nullable = false)
-    @Temporal(TemporalType.DATE)
     @NotNull
+    @Column(name = "IS_BENIFIT_PAID", nullable = false)
+    private Boolean isBenifitPaid = false;
+
+    @Column(name = "DATE_START_WORK")
+    @Temporal(TemporalType.DATE)
     private Date dateStartWork;
 
+    @PositiveOrZero(message = "{msg://com.company.jobcenter.entity/RegistrationCard.amountBenefit.validation.PositiveOrZero}")
     @Column(name = "AMOUNT_BENEFIT", nullable = false)
     @NotNull
     private Long amountBenefit;

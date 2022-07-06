@@ -41,7 +41,7 @@ public class CitizenEdit extends StandardEditor<Citizen> {
 
     @Install(to = "vacanciesDl", target = Target.DATA_LOADER)
     private List<Vacancy> vacanciesDlLoadDelegate(LoadContext<Vacancy> loadContext) {
-        LoadContext.Query query = loadContext.getQuery();
+
         return vacancyService.loadSuitableVacancies(getEditedEntity());
 
     }

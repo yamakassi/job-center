@@ -7,16 +7,16 @@
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
     <changeSet id="1" author="job-center">
         <addColumn tableName="CITIZEN">
-            <column name="VACANCY_ID" type="UUID"/>
+            <column name="PROFESSION_ID" type="UUID"/>
         </addColumn>
     </changeSet>
     <changeSet id="2" author="job-center">
-        <createIndex indexName="IDX_CITIZEN_VACANCY_ID" tableName="CITIZEN">
-            <column name="VACANCY_ID"/>
+        <createIndex indexName="IDX_CITIZEN_PROFESSION_ID" tableName="CITIZEN">
+            <column name="PROFESSION_ID"/>
         </createIndex>
 
-        <addForeignKeyConstraint baseColumnNames="VACANCY_ID" baseTableName="CITIZEN"
-                                 constraintName="FK_CITIZEN_ON_VACANCY" referencedColumnNames="ID"
-                                 referencedTableName="VACANCY"/>
-</changeSet>
+        <addForeignKeyConstraint baseColumnNames="PROFESSION_ID" baseTableName="CITIZEN"
+                                 constraintName="FK_CITIZEN_ON_PROFESSION" referencedColumnNames="ID"
+                                 referencedTableName="PROFESSION"/>
+    </changeSet>
 </databaseChangeLog>
