@@ -34,7 +34,7 @@
             <column name="ID" value="237590e0-fc6f-11ec-b939-0242ac120002"/>
             <column name="position_" value="электромонтер"/>
             <column name="salary" value="900"/>
-            <column name="rate" value="1,5"/>
+            <column name="rate" value="1.5"/>
             <column name="employer_name" value="ТТК ГРУПП"/>
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
@@ -52,11 +52,11 @@
     </changeSet>
     <changeSet id="3" author="job-center" context="!cuba">
 
-        <insert tableName="citizen" dbms="postgresql, mssql, hsqldb">
-            <column name="ID" value="237590e0-fc6f-11ec-b939-0242ac120002"/>
-            <column name="position_" value="электромонтер"/>
-            <column name="salary" value="900"/>
-            <column name="rate" value="1,5"/>
+        <insert tableName="VACANCY" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="1453b480-fdd1-11ec-b939-0242ac120002"/>
+            <column name="position_" value="монтажник"/>
+            <column name="salary" value="400"/>
+            <column name="rate" value="1"/>
             <column name="employer_name" value="ТТК ГРУПП"/>
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
@@ -66,7 +66,7 @@
         </insert>
         <insert tableName="VACANCY_PROFESSION_LINK" dbms="postgresql, mssql, hsqldb">
             <column name="profession_id" value="a9eb7050-fc69-11ec-b939-0242ac120002"/>
-            <column name="vacancy_id" value="237590e0-fc6f-11ec-b939-0242ac120002"/>
+            <column name="vacancy_id" value="1453b480-fdd1-11ec-b939-0242ac120002"/>
 
 
         </insert>

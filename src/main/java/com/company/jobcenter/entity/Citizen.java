@@ -16,9 +16,9 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "CITIZEN", indexes = {
-        @Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID"),
-        @Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID")
+@javax.persistence.Table(name = "CITIZEN", indexes = {
+    @javax.persistence.Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID"),
+    @javax.persistence.Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID")
 })
 @Entity
 public class Citizen {
