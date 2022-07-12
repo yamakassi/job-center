@@ -1,11 +1,8 @@
 package com.company.jobcenter.entity;
 
-import io.jmix.core.DeletePolicy;
 import io.jmix.core.annotation.DeletedBy;
 import io.jmix.core.annotation.DeletedDate;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.entity.annotation.OnDelete;
-import io.jmix.core.metamodel.annotation.Composition;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -26,14 +23,11 @@ public class JobCenter {
     @Id
     private UUID id;
 
-    @OnDelete(DeletePolicy.CASCADE)
-    @Composition
     @OneToMany(mappedBy = "jobCenter")
-    private List<Vacancy> vacancies;
+    private List<Citizen> registeredCitizens;
 
     @OneToMany(mappedBy = "jobCenter")
-    @OnDelete(DeletePolicy.CASCADE)
-    private List<Citizen> citizens;
+    private List<Vacancy> vacancies;
 
     @Column(name = "VERSION", nullable = false)
     @Version
@@ -66,12 +60,12 @@ public class JobCenter {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    public void setCitizens(List<Citizen> citizens) {
-        this.citizens = citizens;
+    public List<Citizen> getRegisteredCitizens() {
+        return registeredCitizens;
     }
 
-    public List<Citizen> getCitizens() {
-        return citizens;
+    public void setRegisteredCitizens(List<Citizen> registeredCitizens) {
+        this.registeredCitizens = registeredCitizens;
     }
 
     public List<Vacancy> getVacancies() {

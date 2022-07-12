@@ -4,6 +4,7 @@ import com.company.jobcenter.app.VacancyService;
 import com.company.jobcenter.entity.Vacancy;
 import io.jmix.core.EntityStates;
 import io.jmix.core.LoadContext;
+import io.jmix.ui.Notifications;
 import io.jmix.ui.component.Label;
 import io.jmix.ui.component.Table;
 import io.jmix.ui.component.data.datagrid.ContainerDataGridItems;
@@ -24,14 +25,12 @@ public class CitizenEdit extends StandardEditor<Citizen> {
 
     @Autowired
     protected MessageBundle messageBundle;
-    @Autowired
-    private EntityStates entityStates;
-    @Autowired
+   @Autowired
     private VacancyService vacancyService;
+
     @Autowired
-    private Table<Vacancy> vacanciesTable;
-    @Autowired
-    private CollectionContainer<Vacancy> vacanciesDc;
+    private Notifications notifications;
+
 
 
     @Install(to = "professionField", subject = "fieldIconProvider")
@@ -40,10 +39,11 @@ public class CitizenEdit extends StandardEditor<Citizen> {
     }
 
     @Install(to = "vacanciesDl", target = Target.DATA_LOADER)
-    private List<Vacancy> vacanciesDlLoadDelegate(LoadContext<Vacancy> loadContext) {
+    private  List<Vacancy> vacanciesDlLoadDelegate(LoadContext<Vacancy> loadContext) {
 
-        return vacancyService.loadSuitableVacancies(getEditedEntity());
+        List<Vacancy> suitableVacancies = vacancyService.loadSuitableVacancies(getEditedEntity());
 
+        return  suitableVacancies;
     }
 
     @Subscribe(id = "vacanciesDl", target = Target.DATA_LOADER)

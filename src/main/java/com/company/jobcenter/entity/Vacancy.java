@@ -95,6 +95,14 @@ public class Vacancy {
     @ManyToOne(fetch = FetchType.LAZY)
     private JobCenter jobCenter;
 
+    public JobCenter getJobCenter() {
+        return jobCenter;
+    }
+
+    public void setJobCenter(JobCenter jobCenter) {
+        this.jobCenter = jobCenter;
+    }
+
     public void setEmployees(List<Citizen> employees) {
         this.employees = employees;
     }
@@ -109,14 +117,6 @@ public class Vacancy {
 
     public void setProfessions(Set<Profession> professions) {
         this.professions = professions;
-    }
-
-    public JobCenter getJobCenter() {
-        return jobCenter;
-    }
-
-    public void setJobCenter(JobCenter jobCenter) {
-        this.jobCenter = jobCenter;
     }
 
     public String getEmployerName() {

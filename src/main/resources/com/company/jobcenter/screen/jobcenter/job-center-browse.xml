@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://jobCenterCitizens.caption"
+        caption="msg://jobCenterBrowse.caption"
         focusComponent="jobCentersTable">
     <data readOnly="true">
-        <collection id="jobCentersDc"
-                    class="com.company.jobcenter.entity.JobCenter">
-            <fetchPlan extends="_base">
-                <property name="citizens" fetchPlan="_base"/>
-            </fetchPlan>
-            <loader id="jobCentersDl">
-                <query>
-                    <![CDATA[select e from JobCenter e]]>
-                </query>
-            </loader>
+        <collection id="vacanciesDc" class="com.company.jobcenter.entity.Vacancy">
+            <fetchPlan extends="_base"/>
+            <loader id="vacanciesDl"/>
+
         </collection>
     </data>
     <facets>
@@ -33,26 +27,21 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="jobCentersTable" spacing="true">
-        <filter id="filter"
-                dataLoader="jobCentersDl">
-            <properties include=".*"/>
-        </filter>
         <groupTable id="jobCentersTable"
                     width="100%"
-                    dataContainer="jobCentersDc">
+                    dataContainer="vacanciesDc">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="position"/>
+                <column id="salary"/>
+                <column id="rate"/>
+                <column id="employerName"/>
+                <column id="professions"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="jobCentersTable.create"/>
-                <button id="editBtn" action="jobCentersTable.edit"/>
-                <button id="removeBtn" action="jobCentersTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

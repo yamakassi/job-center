@@ -16,9 +16,9 @@ import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@javax.persistence.Table(name = "CITIZEN", indexes = {
-    @javax.persistence.Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID"),
-    @javax.persistence.Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID")
+@Table(name = "CITIZEN", indexes = {
+        @Index(name = "IDX_CITIZEN_PROFESSION_ID", columnList = "PROFESSION_ID"),
+        @Index(name = "IDX_CITIZEN_JOB_CENTER_ID", columnList = "JOB_CENTER_ID")
 })
 @Entity
 public class Citizen {
@@ -50,14 +50,14 @@ public class Citizen {
     @Column(name = "IS_EMPLOYMENT")
     private Boolean isEmployment = false;
 
-    @CreatedBy
-    @Column(name = "CREATED_BY")
-    private String createdBy;
-
     @CreatedDate
     @Column(name = "CREATED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    @CreatedBy
+    @Column(name = "CREATED_BY")
+    private String createdBy;
 
     @LastModifiedBy
     @Column(name = "LAST_MODIFIED_BY")
@@ -77,14 +77,21 @@ public class Citizen {
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
 
-    @JoinColumn(name = "JOB_CENTER_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private JobCenter jobCenter;
-
 
     @JoinColumn(name = "VACANCY_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Vacancy vacancy;
+    @JoinColumn(name = "JOB_CENTER_ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private JobCenter jobCenter;
+
+    public JobCenter getJobCenter() {
+        return jobCenter;
+    }
+
+    public void setJobCenter(JobCenter jobCenter) {
+        this.jobCenter = jobCenter;
+    }
 
     public Vacancy getVacancy() {
         return vacancy;
@@ -101,14 +108,6 @@ public class Citizen {
 
     public void setProfession(Profession profession) {
         this.profession = profession;
-    }
-
-    public JobCenter getJobCenter() {
-        return jobCenter;
-    }
-
-    public void setJobCenter(JobCenter jobCenter) {
-        this.jobCenter = jobCenter;
     }
 
     public Boolean getIsEmployment() {
@@ -206,4 +205,6 @@ public class Citizen {
     public void setId(UUID id) {
         this.id = id;
     }
+
+
 }

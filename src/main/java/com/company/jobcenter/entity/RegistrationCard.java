@@ -33,6 +33,7 @@ public class RegistrationCard {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Citizen citizen;
 
+
     @OnDelete(DeletePolicy.CASCADE)
     @JoinColumn(name = "JOB_CENTER_ID")
     @ManyToOne(fetch = FetchType.LAZY)
@@ -77,6 +78,20 @@ public class RegistrationCard {
     @Column(name = "DELETED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date deletedDate;
+
+    @Column(name = "VERSION", nullable = false)
+    @Version
+    private Integer version;
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
+
+
 
     public Date getDateStartWork() {
         return dateStartWork;

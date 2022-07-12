@@ -5,15 +5,26 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <changeSet id="5" author="job-center" context="!cuba">
 
+        <insert tableName="JOB_CENTER" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+
+
+    </changeSet>
     <changeSet id="1" author="job-center" context="!cuba">
 
         <insert tableName="PROFESSION" dbms="postgresql, mssql, hsqldb">
             <column name="ID" value="a9eb7050-fc69-11ec-b939-0242ac120002"/>
             <column name="name" value="электрик"/>
             <column name="last_modified_by" value="admin"/>
-            <column name="last_modified_date" value="2022-07-05 09:05:48.469000"/>
-            <column name="VERSION" value="1"/>
+           <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
 
         </insert>
@@ -21,7 +32,24 @@
             <column name="ID" value="3d84cf7e-fc6e-11ec-b939-0242ac120002"/>
             <column name="name" value="разработчик"/>
             <column name="last_modified_by" value="admin"/>
-            <column name="last_modified_date" value="2022-07-05 09:05:48.469000"/>
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+
+        </insert>
+
+        <insert tableName="PROFESSION" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b346701c-fecd-11ec-b939-0242ac120002"/>
+            <column name="name" value="дизайнер"/>
+            <column name="last_modified_by" value="admin"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+
+        </insert>
+        <insert tableName="PROFESSION" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b3466efa-fecd-11ec-b939-0242ac120002"/>
+            <column name="name" value="монтажер"/>
+            <column name="last_modified_by" value="admin"/>
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
 
@@ -39,7 +67,8 @@
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
             <column name="last_modified_by" value="admin"/>
-            <column name="last_modified_date" value="2022-07-05 16:20:39.427000"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
 
         </insert>
         <insert tableName="VACANCY_PROFESSION_LINK" dbms="postgresql, mssql, hsqldb">
@@ -56,12 +85,12 @@
             <column name="ID" value="1453b480-fdd1-11ec-b939-0242ac120002"/>
             <column name="position_" value="монтажник"/>
             <column name="salary" value="400"/>
-            <column name="rate" value="1"/>
+            <column name="rate" value="0.7"/>
             <column name="employer_name" value="ТТК ГРУПП"/>
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
             <column name="last_modified_by" value="admin"/>
-            <column name="last_modified_date" value="2022-07-05 16:20:39.427000"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
 
         </insert>
         <insert tableName="VACANCY_PROFESSION_LINK" dbms="postgresql, mssql, hsqldb">
@@ -72,5 +101,94 @@
         </insert>
 
     </changeSet>
+    <changeSet id="4" author="job-center" context="!cuba">
+
+        <insert tableName="CITIZEN" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b32ab3e4-fece-11ec-b939-0242ac120002"/>
+            <column name="last_name" value="Иванов"/>
+            <column name="first_name" value="Иван"/>
+            <column name="patronymic" value="Иванович"/>
+            <column name="profession_id" value="a9eb7050-fc69-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+        <insert tableName="CITIZEN" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b32ab6b4-fece-11ec-b939-0242ac120002"/>
+            <column name="last_name" value="Алексеев"/>
+            <column name="first_name" value="Илья"/>
+            <column name="patronymic" value="Викторович"/>
+            <column name="profession_id" value="3d84cf7e-fc6e-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+        <insert tableName="CITIZEN" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="b32ab5ba-fece-11ec-b939-0242ac120002"/>
+            <column name="last_name" value="Смирнова"/>
+            <column name="first_name" value="Виктория"/>
+            <column name="patronymic" value="Алексеевна"/>
+            <column name="profession_id" value="b346701c-fecd-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+
+
+    </changeSet>
+
+    <changeSet id="6" author="job-center" context="!cuba">
+
+        <insert tableName="REGISTRATION_CARD" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="f5230a30-0108-11ed-b939-0242ac120002"/>
+            <column name="is_benifit_paid" value="true"/>
+            <column name="amount_benefit" value="1500"/>
+
+            <column name="citizen_id" value="b32ab3e4-fece-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+        <insert tableName="REGISTRATION_CARD" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="f5230224-0108-11ed-b939-0242ac120002"/>
+            <column name="is_benifit_paid" value="true"/>
+            <column name="amount_benefit" value="1500"/>
+
+            <column name="citizen_id" value="b32ab6b4-fece-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+        <insert tableName="REGISTRATION_CARD" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="f52304ae-0108-11ed-b939-0242ac120002"/>
+            <column name="is_benifit_paid" value="true"/>
+            <column name="amount_benefit" value="1500"/>
+
+            <column name="citizen_id" value="b32ab5ba-fece-11ec-b939-0242ac120002"/>
+            <column name="JOB_CENTER_ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
+
+            <column name="VERSION" value="1"/>
+            <column name="created_by" value="admin"/>
+            <column name="last_modified_by" value="admin"/>
+
+        </insert>
+
+
+    </changeSet>
+
 
 </databaseChangeLog>

@@ -35,13 +35,13 @@ public class VacancyService {
     public Collection<Citizen> setRegisterCardAfterEmploymenCitizen(Collection<Citizen> collection, Vacancy vacancy) {
         List<RegistrationCard> registrationCards = dataManager.load(RegistrationCard.class).all().list();
         List<Citizen> citizenSelect = new ArrayList<>(collection);
-       for (Citizen citizen : citizenSelect) {
+        for (Citizen citizen : citizenSelect) {
             citizen.setIsEmployment(Boolean.TRUE);
 
             RegistrationCard cardRegist = registrationCards.stream()
                     .filter(card -> card.getCitizen().equals(citizen))
                     .findAny()
-                    .orElseThrow(()->new IllegalStateException("citizen is not registered in the job center"));
+                    .orElseThrow(() -> new IllegalStateException("citizen is not registered in the job center"));
 
             if (vacancy.getRate() >= 1 && vacancy.getSalary() > MIN_SALARY) {
 
@@ -60,17 +60,10 @@ public class VacancyService {
         List<RegistrationCard> registrationCards = dataManager.load(RegistrationCard.class).all().list();
         List<Citizen> citizenValidateSelect = new ArrayList<>(selectedValidateCitizen);
         for (Citizen citizen : citizenValidateSelect) {
-
-
-
-
-                Long countC = registrationCards.stream().filter(card -> card.getCitizen().equals(citizen)).count();
-
-                if(countC==0) return false;
-
-
-            }
-        return  true;
+            long countC = registrationCards.stream().filter(card -> card.getCitizen().equals(citizen)).count();
+            if (countC == 0) return false;
         }
+        return true;
+    }
 
 }

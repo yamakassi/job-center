@@ -2,11 +2,10 @@
 <menu-config xmlns="http://jmix.io/schema/ui/menu">
 
     <menu id="job-center" caption="msg://com.company.jobcenter/menu_config.job-center">
-        <item screen="JobCenter.vacancies"
-              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterVacancies.menu"/>
-        <item screen="JobCenter.citizens"
-              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterCitizens.menu"/>
         <separator/>
+        <item screen="JobCenter.browse" caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterBrowse.menu"/>
+        <item screen="JobCenter.browseRegisteredCitizens"
+              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterBrowseRegisteredCitizens.menu"/>
     </menu>
     <menu id="application-masterData" caption="msg://com.company.jobcenter/menu.application">
         <item screen="User.browse" caption="msg://com.company.jobcenter.screen.user/UserBrowse.caption"/>

@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
         xmlns:c="http://jmix.io/schema/ui/jpql-condition"
-        caption="msg://jobCenterVacancies.caption"
+        caption="msg://jobCenterBrowseRegisteredCitizens.caption"
         focusComponent="jobCentersTable">
     <data readOnly="true">
-        <collection id="jobCentersDc"
-                    class="com.company.jobcenter.entity.JobCenter">
-            <fetchPlan extends="_base">
-                <property name="vacancies" fetchPlan="_base">
-                    <property name="professions" fetchPlan="_base"/>
-                </property>
-            </fetchPlan>
-            <loader id="jobCentersDl">
-                <query>
-                    <![CDATA[select e from JobCenter e]]>
-                </query>
-            </loader>
+        <collection id="registeredCitizensDc" class="com.company.jobcenter.entity.Citizen">
+            <fetchPlan extends="_base"/>
+            <loader id="registeredCitizensDl"/>
+
         </collection>
     </data>
     <facets>
@@ -35,28 +27,23 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="jobCentersTable" spacing="true">
-        <filter id="filter"
-                dataLoader="jobCentersDl">
-            <properties include=".*"/>
-        </filter>
-        <table id="jobCentersTable"
-               width="100%"
-               dataContainer="jobCentersDc">
+        <groupTable id="jobCentersTable"
+                    width="100%"
+                    dataContainer="registeredCitizensDc">
             <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="remove" type="remove"/>
             </actions>
             <columns>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="patronymic"/>
+                <column id="profession"/>
+                <column id="isEmployment"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="jobCentersTable.create"/>
-                <button id="editBtn" action="jobCentersTable.edit"/>
-                <button id="removeBtn" action="jobCentersTable.remove"/>
             </buttonsPanel>
-        </table>
+        </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

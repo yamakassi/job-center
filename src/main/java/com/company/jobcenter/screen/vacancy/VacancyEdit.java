@@ -9,6 +9,7 @@ import io.jmix.core.common.util.ParamsMap;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.RemoveOperation;
 import io.jmix.ui.action.list.AddAction;
+import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
 import com.company.jobcenter.entity.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,7 @@ public class VacancyEdit extends StandardEditor<Vacancy> {
     @Autowired
     private Notifications notifications;
 
-    @Autowired
-    private Messages messages;
+
     @Autowired
     private MessageBundle messageBundle;
 
@@ -52,7 +52,7 @@ public class VacancyEdit extends StandardEditor<Vacancy> {
 
     @Install(to = "employeesTable.exclude", subject = "afterActionPerformedHandler")
     private void employeesTableExcludeAfterActionPerformedHandler(RemoveOperation.AfterActionPerformedEvent<Citizen> afterActionPerformedEvent) {
-        afterActionPerformedEvent.getItems().get(0).setIsEmployment(Boolean.FALSE);
+        afterActionPerformedEvent.getItems().get(0).setIsEmployment(false);
     }
 
     @Install(to = "employeesTable.add", subject = "selectValidator")
