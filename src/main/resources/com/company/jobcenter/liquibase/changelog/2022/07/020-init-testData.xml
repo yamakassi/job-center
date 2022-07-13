@@ -7,9 +7,9 @@
 
     <changeSet id="5" author="job-center" context="!cuba">
 
-        <insert tableName="JOB_CENTER" dbms="postgresql, mssql, hsqldb">
+        <insert tableName="job_center" dbms="postgresql, mssql, hsqldb">
             <column name="ID" value="b6e25f88-00df-11ed-b939-0242ac120002"/>
-
+            <column name="name" value="Саратовская обл"/>
             <column name="VERSION" value="1"/>
             <column name="created_by" value="admin"/>
             <column name="last_modified_by" value="admin"/>

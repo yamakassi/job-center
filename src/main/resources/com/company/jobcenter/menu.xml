@@ -4,8 +4,6 @@
     <menu id="job-center" caption="msg://com.company.jobcenter/menu_config.job-center">
         <separator/>
         <item screen="JobCenter.browse" caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterBrowse.menu"/>
-        <item screen="JobCenter.browseRegisteredCitizens"
-              caption="msg://com.company.jobcenter.screen.jobcenter/jobCenterBrowseRegisteredCitizens.menu"/>
     </menu>
     <menu id="application-masterData" caption="msg://com.company.jobcenter/menu.application">
         <item screen="User.browse" caption="msg://com.company.jobcenter.screen.user/UserBrowse.caption"/>

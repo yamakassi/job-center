@@ -43,6 +43,9 @@
             <column name="VERSION" type="INT">
                 <constraints nullable="false"/>
             </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
             <column name="CREATED_BY" type="VARCHAR(255)"/>
             <column name="CREATED_DATE" type="DATETIME"/>
             <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
@@ -81,10 +84,12 @@
             <column name="JOB_CENTER_ID" type="UUID">
                 <constraints nullable="false"/>
             </column>
-            <column name="IS_BENIFIT_PAID" type="BOOLEAN"/>
-            <column name="DATE_START_WORK" type="DATE">
-                <constraints nullable="false"/>
+            <column name="VERSION" type="INT">
+            <constraints nullable="false"/>
             </column>
+            <column name="IS_BENIFIT_PAID" type="BOOLEAN"/>
+            <column name="DATE_START_WORK" type="DATE"/>
+
             <column name="AMOUNT_BENEFIT" type="BIGINT">
                 <constraints nullable="false"/>
             </column>

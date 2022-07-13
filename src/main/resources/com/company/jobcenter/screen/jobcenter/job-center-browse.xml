@@ -4,10 +4,14 @@
         caption="msg://jobCenterBrowse.caption"
         focusComponent="jobCentersTable">
     <data readOnly="true">
-        <collection id="vacanciesDc" class="com.company.jobcenter.entity.Vacancy">
+        <collection id="jobCentersDc"
+                    class="com.company.jobcenter.entity.JobCenter">
             <fetchPlan extends="_base"/>
-            <loader id="vacanciesDl"/>
-
+            <loader id="jobCentersDl">
+                <query>
+                    <![CDATA[select e from JobCenter e]]>
+                </query>
+            </loader>
         </collection>
     </data>
     <facets>
@@ -27,21 +31,27 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="jobCentersTable" spacing="true">
+        <filter id="filter"
+                dataLoader="jobCentersDl">
+            <properties include=".*"/>
+        </filter>
         <groupTable id="jobCentersTable"
                     width="100%"
-                    dataContainer="vacanciesDc">
+                    dataContainer="jobCentersDc">
             <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="position"/>
-                <column id="salary"/>
-                <column id="rate"/>
-                <column id="employerName"/>
-                <column id="professions"/>
+                <column id="name"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
+                <button id="createBtn" action="jobCentersTable.create"/>
+                <button id="editBtn" action="jobCentersTable.edit"/>
+                <button id="removeBtn" action="jobCentersTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

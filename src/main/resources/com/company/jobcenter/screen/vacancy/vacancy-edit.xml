@@ -40,6 +40,7 @@
                         <textField id="salaryField" property="salary"/>
                         <textField id="rateField" property="rate"/>
                         <textField id="employerNameField" property="employerName"/>
+                        <textField id="jobCenterField" property="jobCenter"/>
                     </column>
                 </form>
                 <groupBox id="professionsBox" caption="msg://professionsBox.caption" height="100%"

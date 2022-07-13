@@ -7,6 +7,7 @@
                     class="com.company.jobcenter.entity.RegistrationCard">
             <fetchPlan extends="_base">
                 <property name="citizen" fetchPlan="_base"/>
+                <property name="jobCenter" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="registrationCardsDl">
                 <query>
@@ -18,6 +19,7 @@
                   class="com.company.jobcenter.entity.RegistrationCard">
             <fetchPlan extends="_base">
                 <property name="citizen" fetchPlan="_base"/>
+                <property name="jobCenter" fetchPlan="_base"/>
             </fetchPlan>
             <loader/>
         </instance>
@@ -30,7 +32,7 @@
         <action id="save" icon="OK" caption="msg:///actions.Ok" shortcut="CTRL-ENTER"/>
         <action id="cancel" icon="CANCEL" caption="msg:///actions.Cancel" description="Esc"/>
     </actions>
-    <dialogMode height="600" width="800"/>
+    <dialogMode height="600" width="900"/>
     <layout>
         <split id="split" height="100%" orientation="horizontal" reversePosition="true" width="100%">
             <vbox id="lookupBox" expand="table" height="100%" margin="false,true,false,false" spacing="true">
@@ -46,10 +48,12 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <columns>
-                        <column id="amountBenefit"/>
-                        <column id="dateStartWork"/>
-                        <column id="isBenifitPaid"/>
                         <column id="citizen"/>
+                        <column id="isBenifitPaid"/>
+                        <column id="amountBenefit"/>
+                        <column id="jobCenter"/>
+                        <column id="dateStartWork"/>
+
                     </columns>
                     <simplePagination/>
                     <buttonsPanel id="buttonsPanel"
@@ -67,11 +71,13 @@
             <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="registrationCardDc">
-                        <column width="350px">
+                        <column width="300px">
                             <checkBox id="isBenifitPaidField" property="isBenifitPaid"/>
                             <dateField id="dateStartWorkField" property="dateStartWork"/>
                             <textField id="amountBenefitField" property="amountBenefit"/>
                             <entityPicker id="citizenField" property="citizen"/>
+<entityPicker id="jobCenterField" property="jobCenter"/>
+
                         </column>
                     </form>
                 </scrollBox>

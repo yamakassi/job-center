@@ -8,6 +8,7 @@
                     class="com.company.jobcenter.entity.Vacancy">
             <fetchPlan extends="_base">
                 <property name="professions" fetchPlan="_base"/>
+                <property name="jobCenter" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="vacanciesDl">
                 <query>
@@ -51,6 +52,8 @@
                 <column id="rate"/>
                 <column id="employerName"/>
                 <column id="createdDate"/>
+                <column id="jobCenter"/>
+                <column id="professions"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
