@@ -20,11 +20,7 @@
 
             <loader/>
         </instance>
-        <collection id="vacanciesCenterDc" class="com.company.jobcenter.entity.Vacancy">
-            <fetchPlan extends="_base"/>
-            <loader id="vacanciesDl"/>
 
-        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -46,13 +42,7 @@
 
 
         <tabSheet width="100%">
-            <tab caption="msg://tab_1.caption" id="tab_1" spacing="true">
-                <form id="form" dataContainer="jobCenterDc">
-                    <column width="350px">
-                        <textField id="nameField" property="name"/>
-                    </column>
-                </form>
-            </tab>
+
             <tab caption="msg://tab_2.caption" id="tab_2" spacing="true">
                 <groupTable id="jobCentersTable"
                             width="100%"
@@ -71,6 +61,7 @@
                     </buttonsPanel>
                 </groupTable>
             </tab>
+
     <tab caption="msg://tab_3.caption" id="tab_3" spacing="true" >
         <groupTable id="jobCentersTable2"
                     width="100%"
@@ -90,6 +81,13 @@
             </buttonsPanel>
         </groupTable>
     </tab>
+            <tab caption="msg://tab_1.caption" id="tab_1" spacing="true">
+            <form id="form" dataContainer="jobCenterDc">
+                <column width="350px">
+                    <textField id="nameField" property="name"/>
+                </column>
+            </form>
+        </tab>
         </tabSheet>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>

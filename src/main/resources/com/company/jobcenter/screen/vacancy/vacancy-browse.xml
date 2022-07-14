@@ -51,7 +51,7 @@
                 <column id="salary"/>
                 <column id="rate"/>
                 <column id="employerName"/>
-                <column id="createdDate"/>
+
                 <column id="jobCenter"/>
                 <column id="professions"/>
             </columns>
