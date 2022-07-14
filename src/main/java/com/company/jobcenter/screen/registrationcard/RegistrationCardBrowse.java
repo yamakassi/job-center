@@ -15,11 +15,26 @@ import java.util.UUID;
 @UiDescriptor("registration-card-browse.xml")
 @LookupComponent("table")
 public class RegistrationCardBrowse extends MasterDetailScreen<RegistrationCard> {
-
-
+    @Autowired
+    private DataManager dataManager;
+    @Autowired
+    private EntityStates entityStates;
 
     @Install(to = "citizenField", subject = "fieldIconProvider")
     private String citizenFieldIconProvider(Citizen citizen) {
         return (citizen != null) ? "font-icon:CHECK" : "font-icon:BAN";
     }
+
+    @Subscribe
+    public void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
+        RegistrationCard registrationCard = getEditedEntity();
+        if(entityStates.isNew(getEditedEntity())){
+          Citizen citizen  = registrationCard.getCitizen();
+          citizen.setJobCenter(registrationCard.getJobCenter());
+          dataManager.save(citizen);
+     
+
+        }
+    }
+
 }

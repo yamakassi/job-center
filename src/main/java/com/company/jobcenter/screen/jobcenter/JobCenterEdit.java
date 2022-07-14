@@ -13,14 +13,5 @@ import java.util.List;
 @UiDescriptor("job-center-edit.xml")
 @EditedEntityContainer("jobCenterDc")
 public class JobCenterEdit extends StandardEditor<JobCenter> {
-    @Autowired
-    private DataManager dataManager;
 
-    @Install(to = "vacanciesDl", target = Target.DATA_LOADER)
-    private List<Vacancy> vacanciesDlLoadDelegate(LoadContext<Vacancy> loadContext) {
-
-        List<Vacancy> vacanciesCenter =  dataManager.load(JobCenter.class).all().one().getVacancies();
-        System.out.println(vacanciesCenter.size());
-        return  vacanciesCenter;
-    }
 }

@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @Service
 public class VacancyService {
 
-    public static final long MIN_SALARY = 1000;
+
 
     @Autowired
     private DataManager dataManager;
@@ -43,7 +43,7 @@ public class VacancyService {
                     .findAny()
                     .orElseThrow(() -> new IllegalStateException("citizen is not registered in the job center"));
 
-            if (vacancy.getRate() >= 1 && vacancy.getSalary() > MIN_SALARY) {
+            if (vacancy.getRate() >= 1 && vacancy.getSalary() > Constants.MIN_SALARY) {
 
                 cardRegist.setIsBenifitPaid(Boolean.FALSE);
 

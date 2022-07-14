@@ -1,5 +1,6 @@
 package com.company.jobcenter.screen.vacancy;
 
+import io.jmix.core.EntityStates;
 import io.jmix.ui.model.CollectionLoader;
 import io.jmix.ui.model.CollectionPropertyContainer;
 import io.jmix.ui.screen.*;
