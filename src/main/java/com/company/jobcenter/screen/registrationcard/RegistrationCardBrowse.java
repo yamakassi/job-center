@@ -37,4 +37,5 @@ public class RegistrationCardBrowse extends MasterDetailScreen<RegistrationCard>
         }
     }
 
+
 }

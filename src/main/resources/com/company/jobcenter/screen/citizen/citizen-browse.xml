@@ -10,8 +10,18 @@
             <loader id="citizensDl">
                 <query>
                     <![CDATA[select e from Citizen e]]>
+                    <condition>
+                        <and>
+                            <c:jpql>
+                                <c:where>
+                                  e.isEmployment=  :isEmployment
+                                </c:where>
+                            </c:jpql>
+                        </and>
+                    </condition>
                 </query>
             </loader>
+
         </collection>
     </data>
     <facets>

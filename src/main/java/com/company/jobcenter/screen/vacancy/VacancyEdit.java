@@ -23,6 +23,10 @@ import java.util.stream.Collectors;
 @UiDescriptor("vacancy-edit.xml")
 @EditedEntityContainer("vacancyDc")
 public class VacancyEdit extends StandardEditor<Vacancy> {
+    @Install(to = "employeesTable.add", subject = "screenConfigurer")
+    private void employeesTableAddScreenConfigurer(Screen lookupScreen) {
+        ((CitizenBrowse) lookupScreen).setIsEmploymentParameter(true);
+    }
     @Autowired
     private VacancyService vacancyService;
     @Autowired
